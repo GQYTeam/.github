@@ -1,7 +1,7 @@
 # GQYTeam 仓库标准 v1
 
 适用范围：`https://github.com/GQYTeam` 下所有仓库。新增仓库先按本文件补齐，再提 PR 合并。
-本目录 `.standards/` 只做「标准源」，不属于任何仓库，不进 git。
+标准源就在本仓库（`GQYTeam/.github`）：本文件定规矩，`standards/` 放模板与许可全文，`profile/README.md` 是对外门面。
 
 ## 1. 必备文件
 
@@ -27,8 +27,8 @@
 
 ```bash
 REPO=<仓库名>
-sed "s/<REPO>/$REPO/g" .standards/templates/LICENSE.head > "$REPO/LICENSE"
-cat .standards/LICENSE-body.txt >> "$REPO/LICENSE"
+sed "s/<REPO>/$REPO/g" standards/templates/LICENSE.head > "$REPO/LICENSE"
+cat standards/LICENSE-body.txt >> "$REPO/LICENSE"
 ```
 
 `LICENSE-body.txt` 是 PolyForm Noncommercial License 1.0.0 官方全文，**不要改写**。
@@ -62,18 +62,20 @@ cat .standards/LICENSE-body.txt >> "$REPO/LICENSE"
 | --- | --- | --- |
 | Go 服务（GQY） | `gofmt -l` 无输出、`go vet ./...`、`go test ./...`、`go build` | 已有 `GQY/.github/workflows/ci.yml`（含 race 与覆盖率） |
 | Go 工具（gqy-plugins） | 同上 | Go 版本矩阵 + `gofmt -l` 检查 |
-| Node 插件（零依赖） | `node --check` 全部 `.js`/`.mjs`、`npm test` | Node 20 + `npm ci || true` + `npm test` |
+| Node 插件（零依赖） | `node --check` 全部 `.js`/`.mjs`、`npm test` | Node 20 + `node --check` + `npm test`（无依赖则不 `npm ci`） |
 
 ## 7. 仓库清单与状态
 
-| 仓库 | 类型 | 远程 | 状态 |
-| --- | --- | --- | --- |
-| `GQY` | Go 网关 + 零构建前端 | `git@github.com:GQYTeam/GQY.git` | 活跃 |
-| `gqy-plugins` | Go：插件在线目录 + CLI | 待建 | 骨架 |
-| `gqy-plugins-ShowImages-default` | Node 插件：图片展示 | 待建 | 活跃 |
-| `gqy-plugins-EmotePack-default` | Node 插件：表情包 | 待建 | 活跃 |
-| `gqy-plugins-GitHubAccount-default` | Node 插件：GitHub 账号（设备码远程授权 + 隔离 gh） | 待建 | 活跃 |
-| `.github` | 组织门面与组织级模板 | 待建 | 新建 |
+| 仓库 | 类型 | 远程 | 默认分支 | 状态 |
+| --- | --- | --- | --- | --- |
+| `GQY` | Go 网关 + 零构建前端 | <https://github.com/GQYTeam/GQY> | `main` | 活跃，CI 绿 |
+| `gqy-plugins` | Go：插件在线目录 + CLI | <https://github.com/GQYTeam/gqy-plugins> | `main` | 骨架（registry 已实现），CI 绿 |
+| `gqy-plugins-ShowImages-default` | Node 插件：图片展示 | <https://github.com/GQYTeam/gqy-plugins-ShowImages-default> | `main` | 活跃，CI 绿 |
+| `gqy-plugins-EmotePack-default` | Node 插件：表情包 | <https://github.com/GQYTeam/gqy-plugins-EmotePack-default> | `main` | 活跃，CI 绿 |
+| `.github` | 组织门面、标准源与组织级模板 | <https://github.com/GQYTeam/.github> | `main` | 标准源，CI 绿 |
+| `gqy-plugins-GitHubAccount-default` | Node 插件：GitHub 账号（设备码远程授权 + 隔离 gh） | 未建库 | — | 规划中，未开工 |
+
+以上五个已建仓库的 `main` 均已开启分支保护：禁止强推与删除，PR 需 1 次评审，必须通过对应 CI 检查（admin 可应急放行）。
 
 ## 8. 验收命令
 
