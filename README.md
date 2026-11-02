@@ -47,6 +47,18 @@ make check
 
 标准变更走 PR：同一个 PR 里先改 `STANDARDS.md`，再改 `standards/templates/`，最后更新 `profile/README.md` 里受影响的描述。改完在 PR 描述里列出需要跟进的下游仓库。
 
-## 许可
+## 许可与署名
 
-PolyForm Noncommercial License 1.0.0，禁止商用；fork / 二改 / 借鉴必须署名并保留 `LICENSE` 与 `NOTICE`。
+本组织全部仓库按 [PolyForm Noncommercial License 1.0.0](https://polyformproject.org/licenses/noncommercial/1.0.0) 授权：
+
+- **禁止商用。** 生产、部署、售卖、SaaS、内置于商业产品等任何商业目的的使用，都不在授权范围内。
+- **必须署名。** fork、二次开发、借鉴代码 / 文档 / 设计，都必须标注来源与原作者，并保留 `LICENSE`、`NOTICE` 与 `LICENSE` 顶部的 `Required Notice:` 行。
+
+署名格式：
+
+```text
+来源项目：GQYTeam/<仓库名>
+项目地址：https://github.com/GQYTeam/<仓库名>
+原作者：GQYTeam
+许可证：PolyForm Noncommercial License 1.0.0
+```
