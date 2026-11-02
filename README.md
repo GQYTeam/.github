@@ -13,6 +13,7 @@
 | `profile/README.md` | 组织页 README |
 | `STANDARDS.md` | 仓库标准 v1：必备文件、许可、分支、提交、CI 基线 |
 | `standards/LICENSE-body.txt` | PolyForm Noncommercial License 1.0.0 官方全文，不改写 |
+| `standards/templates/STANDARDS.md` | 指向 `../STANDARDS.md` 的符号链接，便于统一从 `standards/` 取标准 |
 | `standards/templates/` | LICENSE 头、NOTICE、CONTRIBUTING、SECURITY、CHANGELOG、Issue / PR 模板、CI 骨架 |
 | `CONTRIBUTING.md` | 组织级默认贡献指南 |
 | `SECURITY.md` | 组织级默认漏洞披露流程 |
