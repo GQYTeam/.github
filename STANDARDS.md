@@ -23,6 +23,8 @@
 | `.github/pull_request_template.md` | PR 模板 | `templates/pull_request_template.md` |
 | `.github/dependabot.yml` | 依赖更新（`github-actions` 必配） | `templates/dependabot.yml` + 语言生态 |
 
+**`.github` 仓库的特殊约定**：它本身就是组织级默认文件的来源，所以 GitHub 要求的社区健康文件放**仓库根目录**（`CONTRIBUTING.md`、`SECURITY.md`、`CODE_OF_CONDUCT.md`、`ISSUE_TEMPLATE/`、`pull_request_template.md`），不再套一层 `.github/`；其余必备文件（`LICENSE`、`NOTICE`、`README.md`、`CHANGELOG.md`、`.editorconfig`、`.gitignore`、`Makefile`、`.github/workflows/ci.yml`、`.github/dependabot.yml`）照常。
+
 ## 2. LICENSE 生成方式
 
 ```bash
