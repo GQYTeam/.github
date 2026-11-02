@@ -71,7 +71,7 @@ cat standards/LICENSE-body.txt >> "$REPO/LICENSE"
 | 仓库 | 类型 | 远程 | 默认分支 | 状态 |
 | --- | --- | --- | --- | --- |
 | `GQY` | Go 网关 + 零构建前端 | <https://github.com/GQYTeam/GQY> | `main` | 活跃，CI 绿 |
-| `gqy-plugins` | Go：插件在线目录 + CLI | <https://github.com/GQYTeam/gqy-plugins> | `main` | 骨架（registry 已实现），CI 绿 |
+| `gqy-plugins` | Go：插件在线目录 + CLI；组织内自动收录、外部自动 PR、Pages 发布目录 | <https://github.com/GQYTeam/gqy-plugins> | `main` | 活跃，CI / Publish 绿 |
 | `gqy-plugins-ShowImages-default` | Node 插件：图片展示 | <https://github.com/GQYTeam/gqy-plugins-ShowImages-default> | `main` | 活跃，CI 绿 |
 | `gqy-plugins-EmotePack-default` | Node 插件：表情包 | <https://github.com/GQYTeam/gqy-plugins-EmotePack-default> | `main` | 活跃，CI 绿 |
 | `gqy-plugins-Migrator-default` | Node 一次性插件：旧版 HOME 迁移器 | <https://github.com/GQYTeam/gqy-plugins-Migrator-default> | `main` | 活跃，CI 绿 |
