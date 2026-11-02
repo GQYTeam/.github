@@ -4,7 +4,7 @@
 set -uo pipefail
 
 ORG=GQYTeam
-REPOS=(GQY gqy-plugins gqy-plugins-ShowImages-default gqy-plugins-EmotePack-default .github)
+REPOS=(GQY gqy-plugins gqy-plugins-ShowImages-default gqy-plugins-EmotePack-default gqy-plugins-Migrator-default .github)
 
 fail=0
 say() { printf '%s\n' "$*"; }

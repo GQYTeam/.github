@@ -10,6 +10,7 @@ GQY 是跑在你自己电脑上的 AI 助手网关：把 OpenAI 兼容、Anthrop
 | [gqy-plugins](https://github.com/GQYTeam/gqy-plugins) | 插件在线目录（`registry.json`）与 `gqy-plugin` CLI | 骨架 |
 | [gqy-plugins-ShowImages-default](https://github.com/GQYTeam/gqy-plugins-ShowImages-default) | 插件示例：图片展示（13 张示例图，`list` / `show`） | 活跃 |
 | [gqy-plugins-EmotePack-default](https://github.com/GQYTeam/gqy-plugins-EmotePack-default) | 插件示例：表情包（24 态表情 + 4 动图，`list` / `show` / `match`） | 活跃 |
+| [gqy-plugins-Migrator-default](https://github.com/GQYTeam/gqy-plugins-Migrator-default) | 迁移器（一次性插件）：旧版 GQY v0.7.0 的 `GQY_HOME` → 新数据根，默认 dry-run、幂等、脱敏 | 活跃 |
 | [.github](https://github.com/GQYTeam/.github) | 组织门面、组织级模板与仓库标准 | 标准 |
 
 ## 仓库标准

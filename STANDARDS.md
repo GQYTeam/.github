@@ -74,10 +74,11 @@ cat standards/LICENSE-body.txt >> "$REPO/LICENSE"
 | `gqy-plugins` | Go：插件在线目录 + CLI | <https://github.com/GQYTeam/gqy-plugins> | `main` | 骨架（registry 已实现），CI 绿 |
 | `gqy-plugins-ShowImages-default` | Node 插件：图片展示 | <https://github.com/GQYTeam/gqy-plugins-ShowImages-default> | `main` | 活跃，CI 绿 |
 | `gqy-plugins-EmotePack-default` | Node 插件：表情包 | <https://github.com/GQYTeam/gqy-plugins-EmotePack-default> | `main` | 活跃，CI 绿 |
+| `gqy-plugins-Migrator-default` | Node 一次性插件：旧版 HOME 迁移器 | <https://github.com/GQYTeam/gqy-plugins-Migrator-default> | `main` | 活跃，CI 绿 |
 | `.github` | 组织门面、标准源与组织级模板 | <https://github.com/GQYTeam/.github> | `main` | 标准源，CI 绿 |
-| `gqy-plugins-GitHubAccount-default` | Node 插件：GitHub 账号（设备码远程授权 + 隔离 gh） | 未建库 | — | 规划中，未开工 |
+| `gqy-plugins-GitHubAccount-default` | Node 插件：GitHub 账号（设备码远程授权 + 隔离 gh） | <https://github.com/GQYTeam/gqy-plugins-GitHubAccount-default> | `main` | 活跃，CI 绿 |
 
-以上五个已建仓库的 `main` 均已开启分支保护：禁止强推与删除，PR 需 1 次评审，必须通过对应 CI 检查（admin 可应急放行）。
+以上六个已建仓库的 `main` 均已开启分支保护：禁止强推与删除，PR 需 1 次评审，必须通过对应 CI 检查（admin 可应急放行）。
 
 ## 8. 验收命令
 
@@ -92,3 +93,22 @@ git remote -v       # origin 指向 github.com/GQYTeam/<repo>
 gh repo view GQYTeam/<repo> --json name,visibility,defaultBranchRef
 gh run list --repo GQYTeam/<repo> --limit 3
 ```
+
+## 9. 插件仓库规范（v1.1，2026-11-02 起）
+
+所有插件仓库与 `GQY/app/plugins/*` 里的示例插件，manifest 必须符合 `GQY/docs/reference/plugin-manifest.md`。硬性要求：
+
+1. **两种模式**：目录含 `.gqy-installed`（或 manifest 声明 `"source":"installed"`）= 在线安装、**插件本体只读**；否则 = 本地自建/开发模式、可改。**源码仓库里禁止出现 `.gqy-installed`**（测试会红）。
+2. **设置 schema**：需要 WebUI 可配置的插件在 manifest 里声明 `settings`（`string`/`number`/`boolean`/`select`，`key` 唯一，`select` 必须给 `options`）。设置值由 GQY 存 `$GQY_HOME/plugin-settings/<id>.json`，**不得写进插件目录**。
+3. **删除**：WebUI/API 的删除 = 卸载 + 移除插件目录与设置；两种模式都可删。
+4. **强制校验**：`GQY` 仓库的 `TestPluginReposConform` 会扫描内置插件与同级 `gqy-plugins-*` 仓库；不合规即 `make check` 失败，CI 无法合并。
+5. **正在改插件的 agent 请先读**：`GQY/docs/reference/plugin-manifest.md` 与 `GQY/docs/designs/17-插件规范与双模式.md`（PL1–PL8）。
+
+钉不死的部分（本地随意改插件本体）：只能靠安装标记 + 只读语义 + 本通告约束；发现问题按 `GQY/docs/reviews/` 的处置记录流程登记。
+
+## 10. 文档编号规则（DR1–DR4）
+
+- 施工单 `docs/construction/NNN-名称.md`、设计 `docs/designs/NN-名称.md`：**编号唯一、先查号再建档、取最大号 +1**。
+- 发现重复：**后建档的一方**改到下一个空号，并同步更新索引与引用；不允许并存。
+- 强制检查：`GQY` 仓库 `make check` 包含 `scripts/check-docs.sh`（命名/编号/索引/状态），不过即红。
+- 正在写文档的 agent 请先跑一次 `make docs-check`，再提交。
